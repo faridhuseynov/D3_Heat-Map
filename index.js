@@ -89,6 +89,9 @@ $(document).ready(() => {
                 "translate("+padding+",60)")
                 .call(yAxis);
 
+            // svg
+            //     .append("rect")
+
             
         });
 });
