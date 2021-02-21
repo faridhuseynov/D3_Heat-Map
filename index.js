@@ -34,21 +34,20 @@ $(document).ready(() => {
 
             const descriptionBlock = svg
                 .append("g")
-                .attr("id", "description");
+                .attr("id", "description")
+                .attr("transform","translate("+(width/2)+",30)");
 
             descriptionBlock
                 .append("text")
-                .attr("x", (width - padding) / 2)
-                .attr("y", padding)
                 .style("font-size", "30px")
                 .attr("text-anchor", "center")
                 .text("Monthly Global Land-Surface Temperature")
 
             descriptionBlock
                 .append("text")
-                .attr("x", (width - padding) / 2 + 100)
-                .attr("y", padding + 50)
                 .style("font-size", "20px")
+                .attr("x",padding)
+                .attr("y",padding/2)
                 .attr("text-anchor", "center")
                 .text(start_year + " - " + end_year + ": base temperature " + baseTemp + "℃");
 
@@ -66,13 +65,30 @@ $(document).ready(() => {
                 .attr("id","x-axis")
                 .style("font-size","14px")
                 .attr("transform",
-                "translate(0,"+(height-padding)+")")
+                "translate(0,"+(height-20)+")")
                 .call(xAxis);
 
             const yScale = d3
-                .scaleLinear()
-                .domain([1,12])
+                .scaleTime()
+                .domain([(new Date(1970,0,1)),
+                    (new Date(1970,11,31))])
                 .range([padding,height-padding]);
+
+            
+            const monthSpecifier="%B";
+
+            const yAxis = d3
+                .axisLeft(yScale)
+                .tickFormat(d3.timeFormat(monthSpecifier));
+
+            svg
+                .append("g")
+                .attr("id","y-axis")
+                .style("font-size","14px")
+                .attr("transform",
+                "translate("+padding+",60)")
+                .call(yAxis);
+
             
         });
 });
