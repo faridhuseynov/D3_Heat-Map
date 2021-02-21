@@ -1,8 +1,8 @@
 var url = "https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/global-temperature.json";
 var data = [];
 
-const height = 600;
-const width = 1200;
+const height = 700;
+const width = 1300;
 const padding = 80;
 var start_year = "";
 var end_year = "";
@@ -46,10 +46,33 @@ $(document).ready(() => {
 
             descriptionBlock
                 .append("text")
-                .attr("x", (width-padding) / 2+100)
+                .attr("x", (width - padding) / 2 + 100)
                 .attr("y", padding + 50)
                 .style("font-size", "20px")
                 .attr("text-anchor", "center")
                 .text(start_year + " - " + end_year + ": base temperature " + baseTemp + "℃");
+
+            const xScale = d3
+                .scaleLinear()
+                .domain([start_year, end_year])
+                .range([padding, width - padding]);
+
+            const yearSpecifier = "Y";
+            const xAxis = d3
+                .axisBottom(xScale)
+                .tickFormat(d => d3.format(yearSpecifier)(d));
+            svg
+                .append("g")
+                .attr("id","x-axis")
+                .style("font-size","14px")
+                .attr("transform",
+                "translate(0,"+(height-padding)+")")
+                .call(xAxis);
+
+            const yScale = d3
+                .scaleLinear()
+                .domain([1,12])
+                .range([padding,height-padding]);
+            
         });
 });
