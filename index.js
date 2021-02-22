@@ -1,8 +1,8 @@
 var url = "https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/global-temperature.json";
 var data = [];
 
-const height = 700;
-const width = 1300;
+const height = 600;
+const width = 1400;
 const padding = 80;
 var start_year = "";
 var end_year = "";
@@ -102,7 +102,7 @@ $(document).ready(() => {
                 .attr("width",bar_width)
                 .attr("class","cell")
                 .style("fill",d=>getGradient(d.variance+baseTemp))
-                .attr("data-month",d=>d.month)
+                .attr("data-month",d=>d.month-1)
                 .attr("data-year",d=>d.year)
                 .attr("data-temp",d=>d.variance+baseTemp);
 
