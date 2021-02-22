@@ -108,3 +108,29 @@ $(document).ready(() => {
             
         });
 });
+
+function getGradient(d){
+    if(d<=2.8){
+        return "#3D429B";
+    }else if (d<=3.9) {
+        return "#4575B4";
+    }else if (d<=5) {
+        return "#74ADD1";
+    }else if(d<=6.1){
+        return "#ABD9E9";
+    }else if(d<=7.2){
+        return "#E0F3F8";
+    }else if(d<=8.3){
+        return "#FFFFBF";
+    }else if(d<=9.5){
+        return "#FEE090";
+    }else if(d<=10.6){
+        return "#FDAE61";
+    }else if(d<=11.7){
+        return "#F46D43";
+    }else if (d<=12.8) {
+        return "#D73027";
+    }else{
+        return "#A50026";
+    }
+}

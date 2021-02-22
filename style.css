@@ -4,9 +4,9 @@ body{
 }
 
 .cell{
-
+    fill: red;
 }
 
 .cell:hover{
-    background-color: white;
+    stroke: black;
 }
