@@ -101,6 +101,7 @@ $(document).ready(() => {
                 .attr("height",bar_height)
                 .attr("width",bar_width)
                 .attr("class","cell")
+                .style("fill",d=>getGradient(d.variance+baseTemp))
                 .attr("data-month",d=>d.month)
                 .attr("data-year",d=>d.year)
                 .attr("data-temp",d=>d.variance+baseTemp);
