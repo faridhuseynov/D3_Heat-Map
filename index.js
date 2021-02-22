@@ -18,8 +18,7 @@ $(document).ready(() => {
             baseTemp = data.baseTemperature;
             console.log(data);
             console.log(start_year, end_year, baseTemp);
-
-
+         
             d3
                 .select("body")
                 .append("title").attr("id", "title")
@@ -89,8 +88,22 @@ $(document).ready(() => {
                 "translate("+padding+",60)")
                 .call(yAxis);
 
-            // svg
-            //     .append("rect")
+                var bar_height=(height-2*padding)/(12);
+                var bar_width=(width-2*padding)/(end_year-start_year);
+            svg
+                .selectAll("rect")
+                .data(data.monthlyVariance)
+                .enter()
+                .append("rect")
+                .attr("x",d=>xScale(d.year))
+                .attr("y",
+                d=>yScale((new Date(1970,d.month))))
+                .attr("height",bar_height)
+                .attr("width",bar_width)
+                .attr("class","cell")
+                .attr("data-month",d=>d.month)
+                .attr("data-year",d=>d.year)
+                .attr("data-temp",d=>d.variance+baseTemp);
 
             
         });
