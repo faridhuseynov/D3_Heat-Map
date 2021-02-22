@@ -124,6 +124,31 @@ $(document).ready(() => {
                 .duration(500)
                 .style("opacity",0);
         });
+
+    var legendArray=[
+        {value:1.7,color:""},
+        {value:2.8,color:"#4575B4"},
+        {value:3.9,color:"#74ADD1"},
+        {value:5.0,color:"#ABD9E9"},
+        {value:6.1,color:"#E0F3F8"},
+        {value:7.2,color:"#FFFFBF"},
+        {value:8.3,color:"#FEE090"},
+        {value:9.4,color:"#FDAE61"},
+        {value:10.5,color:"#F46D43"},
+        {value:11.6,color:"#D73027"},
+        {value:12.7,color:""}
+    ]
+ 
+    const legendArrayValues=legendArray.map(v=>v.value);
+    var legendAxis = d3.scaleLinear()
+    .domain([0,13.8])
+    .range(0,500)
+    .tickValues(legendArrayValues)
+    var legendBar = d3.select("#main")
+        .append("g")
+        .attr("transform",
+        "translate("+padding+","+height+")")
+        .call(legendAxis);
     });
 });
 
@@ -140,7 +165,7 @@ function getGradient(d) {
     return "#E0F3F8";
   } else if (d <= 8.3) {
     return "#FFFFBF";
-  } else if (d <= 9.5) {
+  } else if (d <= 9.4) {
     return "#FEE090";
   } else if (d <= 10.6) {
     return "#FDAE61";
