@@ -99,7 +99,7 @@ $(document).ready(() => {
                 .data(data.monthlyVariance)
                 .enter()
                 .append("rect")
-                .attr("x", (d) => xScale(d.year))
+                .attr("x", (d) => xScale(d.year)+1)
                 .attr("y", (d) => yScale(new Date(1970, d.month - 1)))
                 .attr("height", bar_height)
                 .attr("width", bar_width)
