@@ -64,7 +64,7 @@ $(document).ready(() => {
                 .attr("id","x-axis")
                 .style("font-size","14px")
                 .attr("transform",
-                "translate(0,"+(height-20)+")")
+                "translate(0,"+(height-padding)+")")
                 .call(xAxis);
 
             const yScale = d3
@@ -85,7 +85,7 @@ $(document).ready(() => {
                 .attr("id","y-axis")
                 .style("font-size","14px")
                 .attr("transform",
-                "translate("+padding+",60)")
+                "translate("+padding+",0)")
                 .call(yAxis);
 
                 var bar_height=(height-2*padding)/(12);
@@ -97,7 +97,7 @@ $(document).ready(() => {
                 .append("rect")
                 .attr("x",d=>xScale(d.year))
                 .attr("y",
-                d=>yScale((new Date(1970,d.month))))
+                d=>yScale((new Date(1970,d.month-1))))
                 .attr("height",bar_height)
                 .attr("width",bar_width)
                 .attr("class","cell")

@@ -2,3 +2,11 @@ body{
     box-sizing: border-box;
     font-family: Lato, "Lucida Grande", "Lucida Sans Unicode", Tahoma, sans-serif;
 }
+
+.cell{
+
+}
+
+.cell:hover{
+    background-color: white;
+}
